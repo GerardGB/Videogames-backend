@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="VideogamesModelStoreContainer" CdmEntityContainer="VideogamesEntities">
+    <EntitySetMapping Name="Desarrolladora">
+      <EntityTypeMapping TypeName="VideogamesModel.Desarrolladora">
+        <MappingFragment StoreEntitySet="Desarrolladora">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nom" ColumnName="Nom" />
+          <ScalarProperty Name="País" ColumnName="País" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Games">
+      <EntityTypeMapping TypeName="VideogamesModel.Games">
+        <MappingFragment StoreEntitySet="Games">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nom" ColumnName="Nom" />
+          <ScalarProperty Name="Gènere" ColumnName="Gènere" />
+          <ScalarProperty Name="Release" ColumnName="Release" />
+          <ScalarProperty Name="id_desarrolladora" ColumnName="id_desarrolladora" />
+          <ScalarProperty Name="PEGI" ColumnName="PEGI" />
+          <ScalarProperty Name="PS4" ColumnName="PS4" />
+          <ScalarProperty Name="NSwitch" ColumnName="NSwitch" />
+          <ScalarProperty Name="XboxOne" ColumnName="XboxOne" />
+          <ScalarProperty Name="PC" ColumnName="PC" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

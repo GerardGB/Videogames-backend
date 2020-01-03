@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="VideogamesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Desarrolladora">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="País" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Games" Relationship="Self.FK_Games_Desarrolladora" FromRole="Desarrolladora" ToRole="Games" />
+  </EntityType>
+  <EntityType Name="Games">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nom" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Gènere" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Release" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="id_desarrolladora" Type="Int32" Nullable="false" />
+    <Property Name="PEGI" Type="Int32" />
+    <Property Name="PS4" Type="Boolean" />
+    <Property Name="NSwitch" Type="Boolean" />
+    <Property Name="XboxOne" Type="Boolean" />
+    <Property Name="PC" Type="Boolean" />
+    <NavigationProperty Name="Desarrolladora" Relationship="Self.FK_Games_Desarrolladora" FromRole="Games" ToRole="Desarrolladora" />
+  </EntityType>
+  <Association Name="FK_Games_Desarrolladora">
+    <End Role="Desarrolladora" Type="Self.Desarrolladora" Multiplicity="1" />
+    <End Role="Games" Type="Self.Games" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Desarrolladora">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Games">
+        <PropertyRef Name="id_desarrolladora" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="VideogamesEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Desarrolladora" EntityType="Self.Desarrolladora" />
+    <EntitySet Name="Games" EntityType="Self.Games" />
+    <AssociationSet Name="FK_Games_Desarrolladora" Association="Self.FK_Games_Desarrolladora">
+      <End Role="Desarrolladora" EntitySet="Desarrolladora" />
+      <End Role="Games" EntitySet="Games" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
